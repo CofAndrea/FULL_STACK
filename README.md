@@ -34,11 +34,11 @@ Remember that this project for me has been a test, i'm not going to deploy it or
 
 ## Getting Started
 
--download the zip and extract files
--open your editor of choice
--go to terminal and go to frontend and backend folders
--npm install for all the packages
--npm start for both and the app will run on your local host
+- download the zip and extract files
+- open your editor of choice
+- go to terminal and go to frontend and backend folders
+- npm install for all the packages
+- npm start for both and the app will run on your local host
 
 ## IMPORTANT IF YOU WANT TO TEST IT
 
