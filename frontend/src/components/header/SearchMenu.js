@@ -84,10 +84,9 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
           />
         </div>
       </div>
-      {results == "" && (
+      {results === "" && (
         <div className="search_history_header">
           <span>Recent searches</span>
-          <a>Edit</a>
         </div>
       )}
       <div className="search_history scrollbar">

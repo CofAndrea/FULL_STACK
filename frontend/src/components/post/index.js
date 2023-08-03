@@ -6,7 +6,7 @@ import ReactsPopup from "./ReactsPopup";
 import { useEffect, useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
-import { comment, getReacts, reactPost } from "../../functions/post";
+import { getReacts, reactPost } from "../../functions/post";
 import Comment from "./Comment";
 export default function Post({ post, user, profile }) {
   const [visible, setVisible] = useState(false);
@@ -34,17 +34,17 @@ export default function Post({ post, user, profile }) {
 
   const reactHandler = async (type) => {
     reactPost(post._id, type, user.token);
-    if (check == type) {
+    if (check === type) {
       setCheck();
-      let index = reacts.findIndex((x) => x.react == check);
+      let index = reacts.findIndex((x) => x.react === check);
       if (index !== -1) {
         setReacts([...reacts, (reacts[index].count = --reacts[index].count)]);
         setTotal((prev) => --prev);
       }
     } else {
       setCheck(type);
-      let index = reacts.findIndex((x) => x.react == type);
-      let index1 = reacts.findIndex((x) => x.react == check);
+      let index = reacts.findIndex((x) => x.react === type);
+      let index1 = reacts.findIndex((x) => x.react === check);
       if (index !== -1) {
         setReacts([...reacts, (reacts[index].count = ++reacts[index].count)]);
         setTotal((prev) => ++prev);
@@ -77,13 +77,11 @@ export default function Post({ post, user, profile }) {
             <div className="post_profile_name">
               {post.user.first_name} {post.user.last_name}
               <div className="updated_p">
-                {post.type == "profilePicture" &&
-                  `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                {post.type === "profilePicture" &&
+                  `updated ${post.user.gender === "male" ? "his" : "her"
                   } profile picture`}
-                {post.type == "coverPicture" &&
-                  `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                {post.type === "coverPicture" &&
+                  `updated ${post.user.gender === "male" ? "his" : "her"
                   } cover picture`}
               </div>
             </div>
@@ -118,12 +116,12 @@ export default function Post({ post, user, profile }) {
                 post.images.length === 1
                   ? "grid_1"
                   : post.images.length === 2
-                  ? "grid_2"
-                  : post.images.length === 3
-                  ? "grid_3"
-                  : post.images.length === 4
-                  ? "grid_4"
-                  : post.images.length >= 5 && "grid_5"
+                    ? "grid_2"
+                    : post.images.length === 3
+                      ? "grid_3"
+                      : post.images.length === 4
+                        ? "grid_4"
+                        : post.images.length >= 5 && "grid_5"
               }
             >
               {post.images.slice(0, 5).map((image, i) => (
@@ -215,21 +213,20 @@ export default function Post({ post, user, profile }) {
             style={{
               color: `
           
-          ${
-            check === "like"
-              ? "#4267b2"
-              : check === "love"
-              ? "#f63459"
-              : check === "haha"
-              ? "#f7b125"
-              : check === "sad"
-              ? "#f7b125"
-              : check === "wow"
-              ? "#f7b125"
-              : check === "angry"
-              ? "#e4605a"
-              : ""
-          }
+          ${check === "like"
+                  ? "#4267b2"
+                  : check === "love"
+                    ? "#f63459"
+                    : check === "haha"
+                      ? "#f7b125"
+                      : check === "sad"
+                        ? "#f7b125"
+                        : check === "wow"
+                          ? "#f7b125"
+                          : check === "angry"
+                            ? "#e4605a"
+                            : ""
+                }
           `,
             }}
           >

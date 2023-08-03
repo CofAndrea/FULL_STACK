@@ -4,15 +4,15 @@ export default function Friends({ friends }) {
     <div className="profile_card">
       <div className="profile_card_header">
         Friends
-        <div className="profile_header_link">See all friends</div>
+        <div className="profile_header_link"><a href="/friends">See all friends</a></div>
       </div>
       {friends && (
         <div className="profile_card_count">
           {friends.length === 0
             ? ""
             : friends.length === 1
-            ? "1 Friend"
-            : `${friends.length} Friends`}
+              ? "1 Friend"
+              : `${friends.length} Friends`}
         </div>
       )}
       <div className="profile_card_grid">
